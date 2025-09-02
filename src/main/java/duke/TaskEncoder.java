@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.ArrayList;
+package duke;
 
 public class TaskEncoder {
     public static String encode(Task task) {

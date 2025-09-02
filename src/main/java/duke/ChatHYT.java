@@ -1,8 +1,9 @@
+package duke;
+
 import java.util.Scanner;
 import java.util.ArrayList;
-import exception.EmptyDescriptionException;
-import exception.InvalidCommandException;
-import java.io.IOException;
+import duke.exception.EmptyDescriptionException;
+import duke.exception.InvalidCommandException;
 
 public class ChatHYT {
     static Scanner scanner = new Scanner(System.in);
@@ -11,27 +12,18 @@ public class ChatHYT {
 
     public static void main(String[] args) {
         tasks = storage.load();
-        System.out.println("Hello! I'm ChatHYT");
-        System.out.println("What can I do for you?");
-        System.out.println("____________________________________________________________");
+        Ui.showWelcome();
 
         while(true) {
             String input = scanner.nextLine();
 
             if (input.equals("bye")) {
-                System.out.println("____________________________________________________________");
-                System.out.println("Bye. Hope to see you again soon!");
-                System.out.println("____________________________________________________________");
+                Ui.showGoodbye();
                 break;
             }
 
             if (input.equalsIgnoreCase("list")) {
-                System.out.println("____________________________________________________________");
-                System.out.println("Here are the tasks in your list:");
-                for (int i = 0; i < tasks.size(); i++) {
-                    System.out.println((i + 1) + ". " + tasks.get(i));
-                }
-                System.out.println("____________________________________________________________");
+                Ui.showList(tasks);
                 continue;
             }
 
@@ -41,10 +33,8 @@ public class ChatHYT {
                     if (index >= 0 && index < tasks.size()) {
                         tasks.get(index).markAsDone();
                         storage.save(tasks);
-                        System.out.println("____________________________________________________________");
-                        System.out.println("Nice! I've marked this task as done:");
-                        System.out.println("  " + tasks.get(index));
-                        System.out.println("____________________________________________________________");
+                        Task taskToBeMarked = tasks.get(index);
+                        Ui.showMark(taskToBeMarked);
                     } else if (index > tasks.size()){
                         throw new InvalidCommandException("Invalid task number.");
                     } else {
@@ -62,10 +52,8 @@ public class ChatHYT {
                     if (index >= 0) {
                         tasks.get(index).unmarkAsDone();
                         storage.save(tasks);
-                        System.out.println("____________________________________________________________");
-                        System.out.println("OK, I've marked this task as not done yet:");
-                        System.out.println("  " + tasks.get(index));
-                        System.out.println("____________________________________________________________");
+                        Task taskToBeUnmarked = tasks.get(index);
+                        Ui.showUnmark(taskToBeUnmarked);
                     } else if (index > tasks.size()){
                         throw new InvalidCommandException("Invalid task number.");
                     } else {
@@ -85,11 +73,8 @@ public class ChatHYT {
                     }
                     tasks.add(new Todo(description));
                     storage.save(tasks);
-                    System.out.println("____________________________________________________________");
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("  " + tasks.get(tasks.size() - 1));
-                    System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                    System.out.println("____________________________________________________________");
+                    Task addedTask = tasks.get(tasks.size() - 1);
+                    Ui.showAddedTask(addedTask, tasks.size());
 
                 } else if (input.startsWith("deadline")) {
                     String input1 = input.substring(8);
@@ -100,11 +85,8 @@ public class ChatHYT {
                     String by = input1.split(" /by")[1];
                     tasks.add(new Deadline(description, by));
                     storage.save(tasks);
-                    System.out.println("____________________________________________________________");
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("  " + tasks.get(tasks.size() - 1));
-                    System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                    System.out.println("____________________________________________________________");
+                    Task addedTask = tasks.get(tasks.size() - 1);
+                    Ui.showAddedTask(addedTask, tasks.size());
 
                 } else if (input.startsWith("event")) {
                     String input2 = input.substring(5);
@@ -117,24 +99,17 @@ public class ChatHYT {
                     String to = input2.split("/to ")[1];
                     tasks.add(new Event(description, from, to));
                     storage.save(tasks);
-                    System.out.println("____________________________________________________________");
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("  " + tasks.get(tasks.size() - 1));
-                    System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                    System.out.println("____________________________________________________________");
+                    Task addedTask = tasks.get(tasks.size() - 1);
+                    Ui.showAddedTask(addedTask, tasks.size());
 
                 } else if (input.startsWith("delete")) {
                     try {
                         int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                        Task to_be_deleted = tasks.get(index);
                         if (index >= 0) {
-                            System.out.println("____________________________________________________________");
-                            System.out.println("Noted. I've removed this task:");
-                            System.out.println("  " + to_be_deleted);
+                            Task taskToBeDeleted = tasks.get(index);
                             tasks.remove(index);
                             storage.save(tasks);
-                            System.out.println("Now you have " + tasks.size() + " tasks in the list.");
-                            System.out.println("____________________________________________________________");
+                            Ui.showRemovedTask(taskToBeDeleted, tasks.size());
                         } else if (index > tasks.size()){
                             throw new InvalidCommandException("Invalid task number.");
                         } else {
@@ -147,10 +122,7 @@ public class ChatHYT {
                     throw new InvalidCommandException("What?");
                 }
             } catch (EmptyDescriptionException | InvalidCommandException e) {
-                System.out.println("____________________________________________________________");
-                System.out.println(e.getMessage());
-                System.out.println("____________________________________________________________");
-
+                Ui.showError(e.getMessage());
             }
         }
         scanner.close();

@@ -1,3 +1,5 @@
+package duke;
+
 public class TaskDecoder {
     public static Task decode(String line) {
         String[] parts = line.split(" \\| ");
