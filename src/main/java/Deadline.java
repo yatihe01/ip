@@ -1,9 +1,17 @@
-public class Deadline extends Task{
-    protected String by;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
-    public Deadline(String description, String by) {
+public class Deadline extends Task{
+    private LocalDate by;
+
+    private static final DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
+
+    public Deadline(String description, String byString) {
         super(description);
-        this.by = by;
+        this.by = LocalDate.parse(byString, inputFormat);
     }
 
     @Override
@@ -11,12 +19,12 @@ public class Deadline extends Task{
         return super.getDescription();
     }
 
-    public String getBy() {
+    public LocalDate getBy() {
         return by;
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by:" + by + ")";
+        return "[D]" + super.toString() + " (by:" + by.format(outputFormat) + ")";
     }
 }

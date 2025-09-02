@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class TaskEncoder {
     public static String encode(Task task) {
         if (task instanceof Deadline) {
