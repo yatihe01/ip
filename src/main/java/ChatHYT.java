@@ -2,12 +2,15 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import exception.EmptyDescriptionException;
 import exception.InvalidCommandException;
+import java.io.IOException;
 
 public class ChatHYT {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Task> tasks = new ArrayList<>();
+    static Storage storage = new Storage("./data/duke.txt");
 
     public static void main(String[] args) {
+        tasks = storage.load();
         System.out.println("Hello! I'm ChatHYT");
         System.out.println("What can I do for you?");
         System.out.println("____________________________________________________________");
@@ -37,6 +40,7 @@ public class ChatHYT {
                     int index = Integer.parseInt(input.split(" ")[1]) - 1;
                     if (index >= 0 && index < tasks.size()) {
                         tasks.get(index).markAsDone();
+                        storage.save(tasks);
                         System.out.println("____________________________________________________________");
                         System.out.println("Nice! I've marked this task as done:");
                         System.out.println("  " + tasks.get(index));
@@ -57,6 +61,7 @@ public class ChatHYT {
                     int index = Integer.parseInt(input.split(" ")[1]) - 1;
                     if (index >= 0) {
                         tasks.get(index).unmarkAsDone();
+                        storage.save(tasks);
                         System.out.println("____________________________________________________________");
                         System.out.println("OK, I've marked this task as not done yet:");
                         System.out.println("  " + tasks.get(index));
@@ -79,6 +84,7 @@ public class ChatHYT {
                         throw new EmptyDescriptionException("Haha! You don't want to do anything right?");
                     }
                     tasks.add(new Todo(description));
+                    storage.save(tasks);
                     System.out.println("____________________________________________________________");
                     System.out.println("Got it. I've added this task:");
                     System.out.println("  " + tasks.get(tasks.size() - 1));
@@ -93,6 +99,7 @@ public class ChatHYT {
                     String description = input1.split(" /by")[0];
                     String by = input1.split(" /by")[1];
                     tasks.add(new Deadline(description, by));
+                    storage.save(tasks);
                     System.out.println("____________________________________________________________");
                     System.out.println("Got it. I've added this task:");
                     System.out.println("  " + tasks.get(tasks.size() - 1));
@@ -109,6 +116,7 @@ public class ChatHYT {
                     String from = from_1.split(" /to")[0];
                     String to = input2.split("/to ")[1];
                     tasks.add(new Event(description, from, to));
+                    storage.save(tasks);
                     System.out.println("____________________________________________________________");
                     System.out.println("Got it. I've added this task:");
                     System.out.println("  " + tasks.get(tasks.size() - 1));
@@ -124,6 +132,7 @@ public class ChatHYT {
                             System.out.println("Noted. I've removed this task:");
                             System.out.println("  " + to_be_deleted);
                             tasks.remove(index);
+                            storage.save(tasks);
                             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
                             System.out.println("____________________________________________________________");
                         } else if (index > tasks.size()){
