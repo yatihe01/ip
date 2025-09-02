@@ -41,11 +41,13 @@ public class ChatHYT {
                         System.out.println("Nice! I've marked this task as done:");
                         System.out.println("  " + tasks.get(index));
                         System.out.println("____________________________________________________________");
-                    } else {
+                    } else if (index > tasks.size()){
                         throw new InvalidCommandException("Invalid task number.");
+                    } else {
+                        throw new EmptyDescriptionException("What?");
                     }
-                } catch (InvalidCommandException e) {
-                    System.out.println("OOPS!!! " + e.getMessage());
+                } catch (InvalidCommandException | EmptyDescriptionException e) {
+                    System.out.println(e.getMessage());
                 }
                 continue;
             }
@@ -59,10 +61,12 @@ public class ChatHYT {
                         System.out.println("OK, I've marked this task as not done yet:");
                         System.out.println("  " + tasks.get(index));
                         System.out.println("____________________________________________________________");
-                    } else {
+                    } else if (index > tasks.size()){
                         throw new InvalidCommandException("Invalid task number.");
+                    } else {
+                        throw new EmptyDescriptionException("What?");
                     }
-                } catch (InvalidCommandException e) {
+                } catch (InvalidCommandException | EmptyDescriptionException e) {
                     System.out.println("OOPS!!! " + e.getMessage());
                 }
                 continue;
@@ -122,11 +126,13 @@ public class ChatHYT {
                             tasks.remove(index);
                             System.out.println("Now you have " + tasks.size() + " tasks in the list.");
                             System.out.println("____________________________________________________________");
-                        } else {
+                        } else if (index > tasks.size()){
                             throw new InvalidCommandException("Invalid task number.");
+                        } else {
+                            throw new EmptyDescriptionException("What?");
                         }
-                    } catch (InvalidCommandException e) {
-                        System.out.println("OOPS!!! " + e.getMessage());
+                    } catch (InvalidCommandException | EmptyDescriptionException e) {
+                        System.out.println(e.getMessage());
                     }
                 } else {
                     throw new InvalidCommandException("What?");
