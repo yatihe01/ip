@@ -77,26 +77,26 @@ public class ChatHYT {
                     Ui.showAddedTask(addedTask, tasks.size());
 
                 } else if (input.startsWith("deadline")) {
-                    String input1 = input.substring(8);
-                    if (!input1.contains("/by")) {
+                    String input_deadline = input.substring(8);
+                    if (!input_deadline.contains("/by")) {
                         throw new InvalidCommandException("Deadline must have an end.");
                     }
-                    String description = input1.split(" /by")[0];
-                    String by = input1.split(" /by")[1];
+                    String description = input_deadline.split(" /by")[0];
+                    String by = input_deadline.split(" /by")[1];
                     tasks.add(new Deadline(description, by));
                     storage.save(tasks);
                     Task addedTask = tasks.get(tasks.size() - 1);
                     Ui.showAddedTask(addedTask, tasks.size());
 
                 } else if (input.startsWith("event")) {
-                    String input2 = input.substring(5);
-                    if (!input2.contains("from")||!input2.contains("to")) {
+                    String input_event = input.substring(5);
+                    if (!input_event.contains("from")||!input_event.contains("to")) {
                         throw new InvalidCommandException("Event must have a period.");
                     }
-                    String description = input2.split(" /from")[0];
-                    String from_1 = input2.split("/from ")[1];
+                    String description = input_event.split(" /from")[0];
+                    String from_1 = input_event.split("/from ")[1];
                     String from = from_1.split(" /to")[0];
-                    String to = input2.split("/to ")[1];
+                    String to = input_event.split("/to ")[1];
                     tasks.add(new Event(description, from, to));
                     storage.save(tasks);
                     Task addedTask = tasks.get(tasks.size() - 1);
