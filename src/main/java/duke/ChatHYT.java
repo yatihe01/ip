@@ -8,6 +8,7 @@ import duke.exception.InvalidCommandException;
 public class ChatHYT {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Task> tasks = new ArrayList<>();
+    static ArrayList<Task> tasks_to_be_found = new ArrayList<>();
     static Storage storage = new Storage("./data/duke.txt");
 
     public static void main(String[] args) {
@@ -118,6 +119,14 @@ public class ChatHYT {
                     } catch (InvalidCommandException | EmptyDescriptionException e) {
                         System.out.println(e.getMessage());
                     }
+                } else if (input.startsWith("find")) {
+                        String keyword = input.substring(4);
+                        for (int i = 0; i < tasks.size(); i++) {
+                            if (tasks.get(i).getDescription().contains(keyword)) {
+                                tasks_to_be_found.add(tasks.get(i));
+                            }
+                        }
+                    Ui.showListToBeFound(tasks_to_be_found);
                 } else {
                     throw new InvalidCommandException("What?");
                 }

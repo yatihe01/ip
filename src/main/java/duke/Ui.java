@@ -35,6 +35,15 @@ public class Ui {
         System.out.println("____________________________________________________________");
     }
 
+    public static void showListToBeFound(ArrayList<Task> tasks) {
+        System.out.println("____________________________________________________________");
+        System.out.println("Here are the matching tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+        System.out.println("____________________________________________________________");
+    }
+
     public static void showMark(Task task) {
         System.out.println("____________________________________________________________");
         System.out.println("Nice! I've marked this task as done:");
