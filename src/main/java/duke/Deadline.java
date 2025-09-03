@@ -1,3 +1,10 @@
+/**
+ * Represents a Task in the Duke application.
+ * Each deadline has a description, a 'by' indicating
+ * its end time.
+ */
+
+
 package duke;
 
 import java.time.LocalDate;
