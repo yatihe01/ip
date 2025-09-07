@@ -14,61 +14,59 @@ public class Ui {
         return scanner.nextLine();
     }
 
-    public static void showWelcome() {
-        System.out.println("Hello! I'm ChatHYT");
-        System.out.println("What can I do for you?");
-        System.out.println("____________________________________________________________");
+    public static String showWelcome() {
+        return "Hello! I'm ChatHYT\n" +
+                "What can I do for you?\n" +
+                "____________________________________________________________";
     }
 
-    public static void showGoodbye() {
-        System.out.println("____________________________________________________________");
-        System.out.println("Bye. Hope to see you again soon!");
-        System.out.println("____________________________________________________________");
+    public static String sayGoodbye() {
+        return "____________________________________________________________\n" +
+        "Bye. Hope to see you again soon!\n" +
+        "____________________________________________________________";
     }
 
-    public static void showList(ArrayList<Task> tasks) {
-        System.out.println("____________________________________________________________");
-        System.out.println("Here are the tasks in your list:");
+    public static String showList(ArrayList<Task> tasks) {
+        if (tasks.isEmpty()) return "No tasks in your list.";
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println((i + 1) + ". " + tasks.get(i));
+            sb.append((i + 1) + "." + tasks.get(i) + "\n");
         }
-        System.out.println("____________________________________________________________");
+        return sb.toString().trim();
     }
 
-    public static void showMark(Task task) {
-        System.out.println("____________________________________________________________");
-        System.out.println("Nice! I've marked this task as done:");
-        System.out.println("  " + task);
-        System.out.println("____________________________________________________________");
+    public static String showListToBeFound(ArrayList<Task> tasks) {
+        if (tasks.isEmpty()) return "No matching tasks found.";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Here are the matching tasks in your list:\n");
+        for (int i = 0; i < tasks.size(); i++) {
+            sb.append((i + 1) + "." + tasks.get(i) + "\n");
+        }
+        return sb.toString().trim();
     }
 
-    public static void showUnmark(Task task) {
-        System.out.println("____________________________________________________________");
-        System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println("  " + task);
-        System.out.println("____________________________________________________________");
+    public static String showMark(Task task) {
+        return "Nice! I've marked this task as done:\n  " + task;
     }
 
-    public static void showAddedTask(Task task, int size) {
-        System.out.println("____________________________________________________________");
-        System.out.println("Got it. I've added this task:");
-        System.out.println("  " + task);
-        System.out.println("Now you have " + size + " tasks in the list.");
-        System.out.println("____________________________________________________________");
+    public static String showUnmark(Task task) {
+        return "OK, I've marked this task as not done yet:\n  " + task;
     }
 
-    public static void showRemovedTask(Task task, int size) {
-        System.out.println("____________________________________________________________");
-        System.out.println("Noted. I've removed this task:");
-        System.out.println("  " + task);
-        System.out.println("Now you have " + size + " tasks in the list.");
-        System.out.println("____________________________________________________________");
+    public static String showAddedTask(Task task, int size) {
+        return "Got it. I've added this task:\n  "
+                + task + "\nNow you have "
+                + size + " tasks in the list.";
     }
 
-    public static void showError(String message) {
-        System.out.println("____________________________________________________________");
-        System.out.println("OOPS!!! " + message);
-        System.out.println("____________________________________________________________");
+    public static String showRemovedTask(Task task, int size) {
+        return "Noted. I've removed this task:\n  "
+                + task + "\nNow you have "
+                + size + " tasks in the list.";
+    }
+
+    public static String showError(String message) {
+        return message;
     }
 
 }
