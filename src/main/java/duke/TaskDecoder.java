@@ -3,12 +3,12 @@ package duke;
 public class TaskDecoder {
     public static Task decode(String line) {
         String[] parts = line.split(" \\| ");
-        String type = parts[0];
+        String taskType = parts[0];
         boolean isDone = parts[1].equals("1");
         String description = parts[2];
 
         Task task;
-        switch (type) {
+        switch (taskType) {
             case "T":
                 task = new Todo(description);
                 break;
@@ -18,7 +18,7 @@ public class TaskDecoder {
                 task = new Event(description, parts[3], parts[4]);
                 break;
             default:
-                throw new IllegalArgumentException("Unknown task type: " + type);
+                throw new IllegalArgumentException("Unknown task type: " + taskType);
         }
         if (isDone) {
             task.markAsDone();

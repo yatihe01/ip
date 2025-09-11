@@ -32,6 +32,8 @@ public class ChatHYT {
                 try {
                     int index = Integer.parseInt(input.split(" ")[1]) - 1;
                     if (index >= 0 && index < tasks.size()) {
+                        assert index >= 0 : "Index should be non-negative";
+                        assert index < tasks.size() : "Index should be within task list bounds";
                         tasks.get(index).markAsDone();
                         storage.save(tasks);
                         Task taskToBeMarked = tasks.get(index);
@@ -98,6 +100,9 @@ public class ChatHYT {
                     String from_1 = input_event.split("/from ")[1];
                     String from = from_1.split(" /to")[0];
                     String to = input_event.split("/to ")[1];
+                    assert !description.isEmpty() : "Event description cannot be empty";
+                    assert !from.isEmpty() : "Event start time cannot be empty";
+                    assert !to.isEmpty() : "Event end time cannot be empty";
                     tasks.add(new Event(description, from, to));
                     storage.save(tasks);
                     Task addedTask = tasks.get(tasks.size() - 1);
