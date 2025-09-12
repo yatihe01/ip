@@ -2,6 +2,8 @@ package duke;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.stream.Stream;
+
 import duke.exception.EmptyDescriptionException;
 import duke.exception.InvalidCommandException;
 
