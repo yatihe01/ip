@@ -1,5 +1,6 @@
 package duke;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -67,6 +68,27 @@ public class Ui {
 
     public static String showError(String message) {
         return message;
+    }
+
+    public static String displaySchedule(LocalDate date, ArrayList<Task> tasks) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < tasks.size(); i++) {
+            Task taskToBeChecked = tasks.get(i);
+            if (taskToBeChecked instanceof Deadline) {
+                Deadline deadline = (Deadline) taskToBeChecked;
+                if (deadline.getBy().equals(date)) {
+                    sb.append((i + 1) + "." + taskToBeChecked + "\n");
+                }
+            } else if (taskToBeChecked instanceof Event) {
+                Event event = (Event) taskToBeChecked;
+                if (event.getFrom().equals(date)) {
+                    sb.append((i + 1) + "." + taskToBeChecked + "\n");
+                }
+            } else {
+                sb.append((i + 1) + "." + taskToBeChecked + "\n");
+            }
+        }
+        return sb.toString().trim();
     }
 
 }

@@ -24,9 +24,8 @@ public class MarkCommand implements Command {
             storage.save(tasks);
             return Ui.showMark(task);
         } catch (InvalidCommandException e) {
-            Ui.showError(e.getMessage());
+            return Ui.showError(e.getMessage());
         }
-        return null;
     }
 
     @Override

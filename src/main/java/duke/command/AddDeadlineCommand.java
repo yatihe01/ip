@@ -36,9 +36,8 @@ public class AddDeadlineCommand implements Command {
             return Ui.showAddedTask(task, tasks.size());
 
         } catch (EmptyDescriptionException | InvalidCommandException e) {
-            Ui.showError(e.getMessage());
+            return Ui.showError(e.getMessage());
         }
-        return null;
     }
 
     @Override
