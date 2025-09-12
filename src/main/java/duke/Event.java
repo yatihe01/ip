@@ -1,3 +1,10 @@
+/**
+ * Represents a Task in the Duke application.
+ * Each event has a description, a 'from' indicating
+ * its starting time, a 'to' indicating its end time.
+ */
+
+
 package duke;
 
 import java.time.LocalDate;
