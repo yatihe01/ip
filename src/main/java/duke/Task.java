@@ -1,3 +1,9 @@
+/**
+ * Represents a Task in the Duke application.
+ * Each task has a description and a status indicating
+ * whether it is done.
+ */
+
 package duke;
 
 public class Task {

@@ -2,6 +2,8 @@ package duke;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.stream.Stream;
+
 import duke.exception.EmptyDescriptionException;
 import duke.exception.InvalidCommandException;
 
@@ -74,10 +76,7 @@ public class ChatHYT {
                     if (description.isEmpty()) {
                         throw new EmptyDescriptionException("Haha! You don't want to do anything right?");
                     }
-                    tasks.add(new Todo(description));
-                    storage.save(tasks);
-                    Task addedTask = tasks.get(tasks.size() - 1);
-                    Ui.showAddedTask(addedTask, tasks.size());
+                    addTask(new Todo(description));
 
                 } else if (input.startsWith("deadline")) {
                     String input_deadline = input.substring(8);
@@ -86,10 +85,7 @@ public class ChatHYT {
                     }
                     String description = input_deadline.split(" /by")[0];
                     String by = input_deadline.split(" /by")[1];
-                    tasks.add(new Deadline(description, by));
-                    storage.save(tasks);
-                    Task addedTask = tasks.get(tasks.size() - 1);
-                    Ui.showAddedTask(addedTask, tasks.size());
+                    addTask(new Deadline(description, by));
 
                 } else if (input.startsWith("event")) {
                     String input_event = input.substring(5);
@@ -103,10 +99,7 @@ public class ChatHYT {
                     assert !description.isEmpty() : "Event description cannot be empty";
                     assert !from.isEmpty() : "Event start time cannot be empty";
                     assert !to.isEmpty() : "Event end time cannot be empty";
-                    tasks.add(new Event(description, from, to));
-                    storage.save(tasks);
-                    Task addedTask = tasks.get(tasks.size() - 1);
-                    Ui.showAddedTask(addedTask, tasks.size());
+                    addTask(new Event(description, from, to));
 
                 } else if (input.startsWith("delete")) {
                     try {
@@ -141,4 +134,11 @@ public class ChatHYT {
         }
         scanner.close();
     }
+
+    private static void addTask(Task task) {
+        tasks.add(task);
+        storage.save(tasks);
+        Ui.showAddedTask(task, tasks.size());
+    }
 }
+
