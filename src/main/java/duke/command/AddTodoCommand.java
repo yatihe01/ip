@@ -25,9 +25,8 @@ public class AddTodoCommand implements Command {
             storage.save(tasks);
             return Ui.showAddedTask(task, tasks.size());
         } catch (EmptyDescriptionException e) {
-            Ui.showError(e.getMessage());
+            return Ui.showError(e.getMessage());
         }
-        return null;
     }
 
     @Override

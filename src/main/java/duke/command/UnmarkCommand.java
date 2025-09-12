@@ -26,9 +26,8 @@ public class UnmarkCommand implements Command {
             return Ui.showUnmark(task);
 
         } catch (InvalidCommandException e) {
-            Ui.showError(e.getMessage());
+            return Ui.showError(e.getMessage());
         }
-        return null;
     }
 
     @Override
