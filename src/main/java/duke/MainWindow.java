@@ -1,5 +1,6 @@
 package duke;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -22,12 +23,14 @@ public class MainWindow extends AnchorPane {
 
     private ChatHYT duke;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/_expodevclientcomponents_assets_checkicon.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/_expodevclientcomponents_assets_clipboardicon.png"));
+    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/chatHYT_image2.jpg"));
+    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/chatHYT_image.jpg"));
 
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        userInput.setOnAction(event -> handleUserInput());
+        sendButton.setOnAction(event -> handleUserInput());
     }
 
     /** Injects the Duke instance */
@@ -52,5 +55,15 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getDukeDialog(response, dukeImage)
         );
         userInput.clear();
+        if (response.toLowerCase().contains("bye")) {
+            new Thread(() -> {
+                try {
+                    Thread.sleep(1500);
+                    Platform.exit();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
 }
