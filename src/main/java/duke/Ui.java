@@ -16,15 +16,12 @@ public class Ui {
     }
 
     public static String showWelcome() {
-        return "Hello! I'm ChatHYT\n" +
-                "What can I do for you?\n" +
-                "____________________________________________________________";
+        return "Hello! I'm ChatHYT.\n" +
+                "What can I do for you?\n";
     }
 
     public static String sayGoodbye() {
-        return "____________________________________________________________\n" +
-        "Bye. Hope to see you again soon!\n" +
-        "____________________________________________________________";
+        return "Bye. Hope to see you again soon!\n";
     }
 
     public static String showList(ArrayList<Task> tasks) {

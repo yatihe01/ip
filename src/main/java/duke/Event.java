@@ -8,19 +8,20 @@
 package duke;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Event extends Task{
-    protected LocalDate from;
-    protected LocalDate to;
+    protected LocalDateTime from;
+    protected LocalDateTime to;
 
-    private static final DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MMM d yyyy");
+    private static final DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MMM d yyyy HH:mm");
 
     public Event(String description, String fromString, String toString) {
         super(description);
-        this.from = LocalDate.parse(fromString, inputFormat);
-        this.to = LocalDate.parse(toString, inputFormat);
+        this.from = LocalDateTime.parse(fromString, inputFormat);
+        this.to = LocalDateTime.parse(toString, inputFormat);
     }
 
     @Override
@@ -28,11 +29,11 @@ public class Event extends Task{
         return super.getDescription();
     }
 
-    public LocalDate getFrom() {
+    public LocalDateTime getFrom() {
         return from;
     }
 
-    public LocalDate getTo() {
+    public LocalDateTime getTo() {
         return to;
     }
 

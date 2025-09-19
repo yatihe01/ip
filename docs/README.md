@@ -100,8 +100,8 @@ Expected output:
 
 ```
 Here are the tasks in your list:
-1. [D][ ] Finish CS project (by: Sep 30 2025)
-2. [E][ ] Project meeting (at: Oct 1 2025)
+1. [D][ ] Finish CS2103 ip (by: Sep 30 2025)
+2. [E][ ] Project meeting (from: Oct 1 2025 to: Oct 2 2025)
 ```
 
 2. delete
@@ -114,8 +114,8 @@ Expected output:
 
 ```
 Here are the tasks in your list:
-1. [D][ ] Finish CS project (by: Sep 30 2025)
-2. [E][ ] Project meeting (at: Oct 1 2025)
+1. [D][ ] Finish CS2103 ip (by: Sep 30 2025)
+2. [E][ ] Project meeting (from: Oct 1 2025 to: Oct 2 2025)
 ```
 3. view by date
 
@@ -127,7 +127,7 @@ Expected output:
 
 ```
 Tasks on 2025-10-01:
-1. [E][ ] Project meeting (at: Oct 1 2025)
+1. [E][ ] Project meeting (from: Oct 1 2025 to: Oct 2 2025)
 ```
 
 ## Exiting the program

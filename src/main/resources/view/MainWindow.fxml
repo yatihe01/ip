@@ -6,39 +6,68 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="400.0"
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefHeight="600.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="duke.MainWindow">
+            fx:controller="duke.MainWindow"
+            style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0e0ff);">
+
     <children>
-        <TextField fx:id="userInput"
-                   layoutY="558.0"
-                   onAction="#handleUserInput"
-                   prefHeight="41.0"
-                   prefWidth="324.0"
-                   AnchorPane.bottomAnchor="1.0" />
-        <Button fx:id="sendButton"
-                layoutX="324.0"
-                layoutY="558.0"
-                mnemonicParsing="false"
-                onAction="#handleUserInput"
-                prefHeight="41.0"
-                prefWidth="76.0"
-                text="Send" />
+
+        <!-- Chat display area -->
         <ScrollPane fx:id="scrollPane"
+                    fitToWidth="true"
                     hbarPolicy="NEVER"
-                    hvalue="1.0"
-                    prefHeight="557.0"
-                    prefWidth="400.0"
-                    vvalue="1.0">
+                    vbarPolicy="AS_NEEDED"
+                    AnchorPane.topAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0"
+                    AnchorPane.bottomAnchor="60.0"
+                    style="-fx-background: transparent;
+                           -fx-background-color: transparent;
+                           -fx-border-color: transparent;
+                           -fx-padding: 10;">
             <content>
                 <VBox fx:id="dialogContainer"
-                      prefHeight="552.0"
-                      prefWidth="388.0" />
+                      spacing="10"
+                      style="-fx-padding: 10;"/> <!-- no background color -->
             </content>
         </ScrollPane>
+
+        <!-- Input bar -->
+        <TextField fx:id="userInput"
+                   onAction="#handleUserInput"
+                   prefHeight="50"
+                   AnchorPane.bottomAnchor="0.0"
+                   AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="80.0"
+                   style="-fx-background-radius: 25;
+                   -fx-background-color: rgba(255,255,255,0.9);
+                   -fx-border-color: #d0d0d0;
+                   -fx-border-radius: 25;
+                   -fx-padding: 12 15 12 15;
+                   -fx-font-size: 14px;
+                   -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0.3, 0, 2);" />
+
+        <!-- Send button -->
+        <Button fx:id="sendButton"
+                text="Send"
+                onAction="#handleUserInput"
+                prefHeight="50"
+                prefWidth="80"
+                AnchorPane.bottomAnchor="0.0"
+                AnchorPane.rightAnchor="0.0"
+                style="-fx-background-color: #4169e1;
+                       -fx-border-color: #87cefa;
+                       -fx-background-radius: 25;
+                       -fx-border-radius: 25;
+                       -fx-border-width: 2;
+                       -fx-font-weight: bold;
+                       -fx-font-size: 14px;
+                       -fx-text-fill: #ffffff;
+                       -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
+                       -fx-cursor: hand;" />
     </children>
 </AnchorPane>
-
