@@ -73,12 +73,12 @@ public class Ui {
             Task taskToBeChecked = tasks.get(i);
             if (taskToBeChecked instanceof Deadline) {
                 Deadline deadline = (Deadline) taskToBeChecked;
-                if (deadline.getBy().equals(date)) {
+                if (deadline.getBy().toLocalDate().equals(date)) {
                     sb.append((i + 1) + "." + taskToBeChecked + "\n");
                 }
             } else if (taskToBeChecked instanceof Event) {
                 Event event = (Event) taskToBeChecked;
-                if (event.getFrom().equals(date)) {
+                if (!date.isBefore(event.getFrom().toLocalDate()) && !date.isAfter(event.getTo().toLocalDate())) {
                     sb.append((i + 1) + "." + taskToBeChecked + "\n");
                 }
             } else {
