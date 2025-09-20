@@ -17,12 +17,6 @@ public class Main extends Application {
 
     /**
      * Starts the JavaFX application.
-     * <p>
-     * This method loads the FXML layout for the main window,
-     * creates a scene, injects the {@code ChatHYT} instance into
-     * the {@link MainWindow} controller, and shows the stage.
-     * </p>
-     *
      * @param stage The primary stage for this application.
      */
     @Override
