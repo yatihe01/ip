@@ -8,10 +8,6 @@ import java.time.LocalDate;
 /**
  * The {@code Parser} class is responsible for interpreting user input
  * and converting it into the corresponding {@link Command} object.
- * <p>
- * It examines the raw string provided by the user and determines
- * which command to construct. If the input does not match any
- * supported command, an {@link InvalidCommandException} is thrown.
  */
 public class Parser {
 
