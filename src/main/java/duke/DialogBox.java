@@ -14,6 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
+/**
+ * Represents a custom dialog box used in the ChatHYT GUI.
+ * <p>
+ * A {@code DialogBox} consists of a text label and an image view.
+ * The box can be styled differently for user messages and Duke messages.
+ * </p>
+ */
 public class DialogBox extends HBox {
     @FXML
     private Label dialog;
@@ -65,10 +72,24 @@ public class DialogBox extends HBox {
         setAlignment(Pos.TOP_LEFT);
     }
 
+    /**
+     * Creates a dialog box for the user.
+     *
+     * @param text The user's message.
+     * @param img  The user's avatar image.
+     * @return A {@code DialogBox} representing the user's message.
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img, true);
     }
 
+    /**
+     * Creates a dialog box for chatHYT.
+     *
+     * @param text The chatbot's message.
+     * @param img  The chatbot's avatar image.
+     * @return A {@code DialogBox} representing Duke's message.
+     */
     public static DialogBox getDukeDialog(String text, Image img) {
         return new DialogBox(text, img, false);
     }

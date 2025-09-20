@@ -1,16 +1,9 @@
 package duke;
 
-import duke.command.AddDeadlineCommand;
-import duke.command.AddEventCommand;
-import duke.command.AddTodoCommand;
-import duke.command.ByeCommand;
-import duke.command.DeleteCommand;
-import duke.command.FindCommand;
-import duke.command.ListCommand;
-import duke.command.MarkCommand;
-import duke.command.UnmarkCommand;
-import duke.command.Command;
+import duke.command.*;
 import duke.exception.InvalidCommandException;
+
+import java.time.LocalDate;
 
 public class Parser {
 
@@ -27,16 +20,19 @@ public class Parser {
             int index = Integer.parseInt(input.split(" ")[1]) - 1;
             return new UnmarkCommand(index);
         } else if (input.startsWith("todo")) {
-            return new AddTodoCommand(input.substring(4));
+            return new AddTodoCommand(input.substring(4).trim());
         } else if (input.startsWith("deadline")) {
-            return new AddDeadlineCommand(input.substring(8));
+            return new AddDeadlineCommand(input.substring(8).trim());
         } else if (input.startsWith("event")) {
-            return new AddEventCommand(input.substring(5));
+            return new AddEventCommand(input.substring(5).trim());
         } else if (input.startsWith("delete")) {
             int index = Integer.parseInt(input.split(" ")[1]) - 1;
             return new DeleteCommand(index);
         } else if (input.startsWith("find")) {
-            return new FindCommand(input.substring(4));
+            return new FindCommand(input.substring(4).trim());
+        } else if (input.startsWith("view")) {
+            LocalDate date = LocalDate.parse(input.substring(5).trim());
+            return new ViewDateCommand(date);
         } else {
             throw new InvalidCommandException("What?");
         }

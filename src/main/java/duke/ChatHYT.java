@@ -11,12 +11,30 @@ import duke.storage.Storage;
 import duke.task.Task;
 import duke.ui.Ui;
 
+/**
+ * The main class of the ChatHYT application.
+ * <p>
+ * ChatHYT handles user interaction for adding, deleting, marking,
+ * unmarking, and finding tasks. It uses {@link Storage} for
+ * persistent storage and {@link Ui} for user interface messages.
+ * </p>
+ */
 public class ChatHYT {
     static Scanner scanner = new Scanner(System.in);
     static ArrayList<Task> tasks = new ArrayList<>();
     static ArrayList<Task> tasks_to_be_found = new ArrayList<>();
     static Storage storage = new Storage("./data/duke.txt");
 
+    /**
+     * The main entry point of the application.
+     * <p>
+     * Continuously reads user input and executes commands until the user
+     * enters "bye". Supports commands like "todo", "deadline", "event",
+     * "delete", "mark", "unmark", "find", and "view".
+     * </p>
+     *
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         tasks = storage.load();
         Ui.showWelcome();
@@ -78,48 +96,6 @@ public class ChatHYT {
             }
         }
         scanner.close();
-    }
-
-    public String getResponse(String input) {
-        try {
-            if (input.equals("bye")) {
-                return Ui.sayGoodbye();
-            } else if (input.equalsIgnoreCase("list")) {
-                return Ui.showList(tasks);
-            } else if (input.startsWith("mark ")) {
-                int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                MarkCommand markCommand = new MarkCommand(index);
-                return markCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("unmark ")) {
-                int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                UnmarkCommand unmarkCommand = new UnmarkCommand(index);
-                return unmarkCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("todo")) {
-                AddTodoCommand todoCommand = new AddTodoCommand(input.substring(4).trim());
-                return todoCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("deadline")) {
-                AddDeadlineCommand deadlineCommand = new AddDeadlineCommand(input.substring(8).trim());
-                return deadlineCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("event")) {
-                AddEventCommand eventCommand = new AddEventCommand(input.substring(5).trim());
-                return eventCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("delete")) {
-                int index = Integer.parseInt(input.split(" ")[1]) - 1;
-                DeleteCommand deleteCommand = new DeleteCommand(index);
-                return deleteCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("find")) {
-                FindCommand findCommand = new FindCommand(input.substring(4).trim());
-                return findCommand.execute(tasks, storage, new Ui());
-            } else if (input.startsWith("view")) {
-                LocalDate date = LocalDate.parse(input.substring(5).trim());
-                ViewDateCommand view = new ViewDateCommand(date);
-                return view.execute(tasks, storage, new Ui());
-            } else {
-                throw new InvalidCommandException("What?");
-            }
-        } catch (InvalidCommandException e) {
-            return Ui.showError(e.getMessage());
-        }
     }
 }
 
