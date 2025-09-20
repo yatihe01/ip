@@ -1,5 +1,9 @@
 package duke.command;
 
+/**
+ *  Represents a command to add a deadline task.
+ */
+
 import java.util.ArrayList;
 import duke.task.Task;
 import duke.task.Event;
@@ -15,6 +19,14 @@ public class AddEventCommand implements Command {
         this.input = input.trim();
     }
 
+    /**
+     *
+     * @param tasks The list of existing tasks.
+     * @param storage The storage handler for saving tasks.
+     * @param ui The UI handler for displaying messages.
+     * @return A string message confirming the added event,
+     *         or an error message if the input is invalid.
+     */
     @Override
     public String execute(ArrayList<Task> tasks, Storage storage, Ui ui) {
         try {
