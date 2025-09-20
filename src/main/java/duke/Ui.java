@@ -69,20 +69,21 @@ public class Ui {
 
     public static String displaySchedule(LocalDate date, ArrayList<Task> tasks) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < tasks.size(); i++) {
-            Task taskToBeChecked = tasks.get(i);
+        int counter = 1;
+
+        for (Task taskToBeChecked : tasks) {
             if (taskToBeChecked instanceof Deadline) {
                 Deadline deadline = (Deadline) taskToBeChecked;
                 if (deadline.getBy().toLocalDate().equals(date)) {
-                    sb.append((i + 1) + "." + taskToBeChecked + "\n");
+                    sb.append(counter++).append(". ").append(taskToBeChecked).append("\n");
                 }
             } else if (taskToBeChecked instanceof Event) {
                 Event event = (Event) taskToBeChecked;
                 if (!date.isBefore(event.getFrom().toLocalDate()) && !date.isAfter(event.getTo().toLocalDate())) {
-                    sb.append((i + 1) + "." + taskToBeChecked + "\n");
+                    sb.append(counter++).append(". ").append(taskToBeChecked).append("\n");
                 }
             } else {
-                sb.append((i + 1) + "." + taskToBeChecked + "\n");
+                sb.append(counter++).append(". ").append(taskToBeChecked).append("\n");
             }
         }
         return sb.toString().trim();
