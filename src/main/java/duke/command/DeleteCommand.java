@@ -1,7 +1,7 @@
 package duke.command;
 
 /**
- *  Represents a command to show delete message.
+ *  Represents a command to delete a task.
  */
 
 import java.util.ArrayList;

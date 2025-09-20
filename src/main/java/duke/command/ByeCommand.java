@@ -1,7 +1,7 @@
 package duke.command;
 
 /**
- *  Represents a command to show goodbye message.
+ *  Represents a command to show goodbye message and exit the program.
  */
 
 import java.util.ArrayList;

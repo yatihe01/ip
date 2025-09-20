@@ -1,5 +1,9 @@
 package duke.command;
 
+/**
+ *  Represents a command to list all tasks.
+ */
+
 import java.util.ArrayList;
 import duke.task.Task;
 import duke.storage.Storage;
@@ -7,6 +11,13 @@ import duke.ui.Ui;
 
 public class ListCommand implements Command {
 
+    /**
+     *
+     * @param tasks The list of existing tasks.
+     * @param storage The storage handler for saving tasks.
+     * @param ui The UI handler for displaying messages.
+     * @return A string message confirming all tasks listed.
+     */
     @Override
     public String execute(ArrayList<Task> tasks, Storage storage, Ui ui) {
         return Ui.showList(tasks); // display all tasks
