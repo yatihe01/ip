@@ -19,13 +19,14 @@
                text="Label"
                wrapText="true"
                minHeight="-Infinity"
-               maxWidth="250.0"
+               maxWidth="Infinity"
                style="-fx-background-radius: 20;
                       -fx-border-radius: 20;
                       -fx-border-width: 2;
                       -fx-padding: 10 15 10 15;
                       -fx-text-fill: #000000;
                       -fx-font-size: 14px;
+                      -fx-font-family: 'Times New Roman';
                       -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0.3, 0, 2);" />
 
         <ImageView fx:id="displayPicture"

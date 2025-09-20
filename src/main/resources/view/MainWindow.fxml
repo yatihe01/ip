@@ -8,14 +8,17 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Rectangle?>
 <AnchorPane prefHeight="600.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="duke.MainWindow"
-            style="-fx-background-color: linear-gradient(to bottom, #f0f0f0, #e0e0ff);">
+            style="-fx-background-image: url('/Images/chatHYT4.png');
+                   -fx-background-size: cover;
+                   -fx-background-position: center;
+                   -fx-background-repeat: no-repeat;">
 
-    <children>
-
+<children>
         <!-- Chat display area -->
         <ScrollPane fx:id="scrollPane"
                     fitToWidth="true"
@@ -32,7 +35,7 @@
             <content>
                 <VBox fx:id="dialogContainer"
                       spacing="10"
-                      style="-fx-padding: 10;"/> <!-- no background color -->
+                      style="-fx-padding: 10;"/>
             </content>
         </ScrollPane>
 
@@ -59,13 +62,14 @@
                 prefWidth="80"
                 AnchorPane.bottomAnchor="0.0"
                 AnchorPane.rightAnchor="0.0"
-                style="-fx-background-color: #4169e1;
-                       -fx-border-color: #87cefa;
+                style="-fx-background-color: #f5f5dc;
+                       -fx-border-color: #a1887f;
                        -fx-background-radius: 25;
                        -fx-border-radius: 25;
                        -fx-border-width: 2;
                        -fx-font-weight: bold;
                        -fx-font-size: 14px;
+                       -fx-font-color: #ffffff;
                        -fx-text-fill: #ffffff;
                        -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
                        -fx-cursor: hand;" />

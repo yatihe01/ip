@@ -34,7 +34,7 @@ public class DialogBox extends HBox {
         displayPicture.setImage(img);
 
         if (isUser) {
-            dialog.setStyle("-fx-background-color: #ffe4e1;" +
+            dialog.setStyle("-fx-background-color: #f5f5dc;" +
                             "-fx-border-color: #b0b0b0;" +
                             "-fx-background-radius: 20;" +
                             "-fx-border-radius: 20;" +

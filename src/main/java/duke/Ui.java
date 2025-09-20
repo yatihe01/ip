@@ -16,8 +16,8 @@ public class Ui {
     }
 
     public static String showWelcome() {
-        return "Hello! I'm ChatHYT.\n" +
-                "What can I do for you?\n";
+        return "Good day! I'm ChatHYT.\n" +
+                "How can I help you? \n";
     }
 
     public static String sayGoodbye() {
@@ -25,7 +25,7 @@ public class Ui {
     }
 
     public static String showList(ArrayList<Task> tasks) {
-        if (tasks.isEmpty()) return "No tasks in your list.";
+        if (tasks.isEmpty()) return "No tasks yet, find yourself some work";
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < tasks.size(); i++) {
             sb.append((i + 1) + "." + tasks.get(i) + "\n");
@@ -34,7 +34,7 @@ public class Ui {
     }
 
     public static String showListToBeFound(ArrayList<Task> tasks) {
-        if (tasks.isEmpty()) return "No matching tasks found.";
+        if (tasks.isEmpty()) return "No matching tasks found. Try other keywords?";
         StringBuilder sb = new StringBuilder();
         sb.append("Here are the matching tasks in your list:\n");
         for (int i = 0; i < tasks.size(); i++) {
@@ -44,11 +44,11 @@ public class Ui {
     }
 
     public static String showMark(Task task) {
-        return "Nice! I've marked this task as done:\n  " + task;
+        return "Nice to see that you have completed it:\n  " + task;
     }
 
     public static String showUnmark(Task task) {
-        return "OK, I've marked this task as not done yet:\n  " + task;
+        return "It's ok, take your time:\n  " + task;
     }
 
     public static String showAddedTask(Task task, int size) {
