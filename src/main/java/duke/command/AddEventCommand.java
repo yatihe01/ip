@@ -1,7 +1,7 @@
 package duke.command;
 
 /**
- *  Represents a command to add a deadline task.
+ *  Represents a command to add a event task.
  */
 
 import java.util.ArrayList;
