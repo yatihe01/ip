@@ -1,16 +1,12 @@
 # ChatHYT User Guide
 
-// Product screenshot goes here
-
-
-// Product intro goes here
 ChatHYT is a simple task manager chatbot with a friendly conversational interface. You can add tasks, set deadlines, mark them as done, and manage your schedule—all in a natural, chat-like environment.
 
 Whether you’re keeping track of assignments, deadlines, or personal todos, ChatHYT helps you stay organized with minimal fuss.
 
 ## Adding Tasks
 
-1. Adding Todo 
+Adding Todo 
 Command Format: `todo TASK_DESCRIPTION`
 
 Example: `todo Read Chapter 5`
@@ -22,7 +18,7 @@ Got it! I've added this task:
 Now you have 1 task in the list.
 ```
 
-2. Adding Deadline
+Adding Deadline
 
 Command Format: `deadline TASK_DESCRIPTION /by DATE_TIME`
 
@@ -35,7 +31,7 @@ Got it! I've added this task:
 Now you have 2 tasks in the list.
 ```
 
-3. Adding Event
+Adding Event
 
 Command Format: `event TASK_DESCRIPTION /from DATE_TIME /to DATE_TIME`
 
@@ -50,7 +46,7 @@ Now you have 3 tasks in the list.
 
 ## Managing Tasks
 
-1. mark
+mark
    
 Command Format: `mark TASK_NUMBER`
 
@@ -61,7 +57,7 @@ Expected output:
 Nice! I've marked this task as done:
   [D][X] Finish CS2103 ip (by: Sep 30 2025)
 ```
-2. unmark
+unmark
 
 Command Format: `unmark TASK_NUMBER`
 
@@ -74,7 +70,7 @@ Nice! I've marked this task as done:
   [D][ ] Finish CS2103 ip (by: Sep 30 2025)
 ```
 
-3. delete
+delete
 
 Command Format: `delete TASK_NUMBER`
 
@@ -90,7 +86,7 @@ Now you have 2 tasks in the list.
 
 ## Viewing tasks
 
-1. find
+find
 
 Command Format: `list`
 
@@ -104,7 +100,7 @@ Here are the tasks in your list:
 2. [E][ ] Project meeting (from: Oct 1 2025 to: Oct 2 2025)
 ```
 
-2. delete
+delete
 
 Command Format: `find KEYWORD`
 
@@ -117,7 +113,7 @@ Here are the tasks in your list:
 1. [D][ ] Finish CS2103 ip (by: Sep 30 2025)
 2. [E][ ] Project meeting (from: Oct 1 2025 to: Oct 2 2025)
 ```
-3. view by date
+view by date
 
 Command Format: `view yyyy-mm-dd`
 
