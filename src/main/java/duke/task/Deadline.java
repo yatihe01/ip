@@ -1,15 +1,13 @@
-/**
- * Represents a Task in the Duke application.
- * Each deadline has a description, a 'by' indicating
- * its end time.
- */
-
-
 package duke.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a Task in the Duke application.
+ * Each deadline has a description, a 'by' indicating
+ * its end time.
+ */
 public class Deadline extends Task {
     private LocalDateTime by;
 

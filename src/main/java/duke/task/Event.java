@@ -1,15 +1,13 @@
-/**
- * Represents a Task in the Duke application.
- * Each event has a description, a 'from' indicating
- * its starting time, a 'to' indicating its end time.
- */
-
-
 package duke.task;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a Task in the Duke application.
+ * Each event has a description, a 'from' indicating
+ * its starting time, a 'to' indicating its end time.
+ */
 public class Event extends Task {
     protected LocalDateTime from;
     protected LocalDateTime to;

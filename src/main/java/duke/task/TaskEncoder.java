@@ -1,6 +1,15 @@
 package duke.task;
 
+/**
+ * Utility class for encoding {@link Task} objects into string representations
+ * suitable for persistent storage.
+ */
 public class TaskEncoder {
+    /**
+     * Encodes a {@link Task} into a string representation.
+     * @param task The {@link Task} object to encode.
+     * @return A string representation of the task.
+     */
     public static String encode(Task task) {
         if (task instanceof Deadline) {
             return "D | " + (task.isDone ? 1 : 0) + " | "
