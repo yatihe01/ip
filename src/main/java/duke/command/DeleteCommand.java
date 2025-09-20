@@ -1,5 +1,9 @@
 package duke.command;
 
+/**
+ *  Represents a command to show delete message.
+ */
+
 import java.util.ArrayList;
 import duke.task.Task;
 import duke.storage.Storage;
@@ -13,6 +17,14 @@ public class DeleteCommand implements Command {
         this.index = index;
     }
 
+    /**
+     *
+     * @param tasks The list of existing tasks.
+     * @param storage The storage handler for saving tasks.
+     * @param ui The UI handler for displaying messages.
+     * @return A string message confirming the deleted task,
+     *         or an error message if the input is invalid.
+     */
     @Override
     public String execute(ArrayList<Task> tasks, Storage storage, Ui ui) {
         try {
