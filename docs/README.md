@@ -1,6 +1,6 @@
 # ChatHYT User Guide
 
-ChatHYT is a simple task manager chatbot with a friendly conversational interface. You can add tasks, set deadlines, mark them as done, and manage your schedule—all in a natural, chat-like environment.
+ChatHYT is a simple task manager chatbot with a friendly conversational interface. You can add tasks, set tasks, mark them as done, and manage your schedule—all in a natural, chat-like environment.
 
 Whether you’re keeping track of assignments, deadlines, or personal todos, ChatHYT helps you stay organized with minimal fuss.
 
