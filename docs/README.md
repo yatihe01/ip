@@ -66,7 +66,7 @@ Example: `unmark 2`
 Expected output:
 
 ```
-Nice! I've marked this task as done:
+It's ok, take your time:
   [D][ ] Finish CS2103 ip (by: Sep 30 2025)
 ```
 
