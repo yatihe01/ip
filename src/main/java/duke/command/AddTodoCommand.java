@@ -1,10 +1,10 @@
 package duke.command;
 
 import java.util.ArrayList;
-import duke.Task;
-import duke.Storage;
-import duke.Ui;
-import duke.Todo;
+import duke.task.Task;
+import duke.storage.Storage;
+import duke.ui.Ui;
+import duke.task.Todo;
 import duke.exception.EmptyDescriptionException;
 
 public class AddTodoCommand implements Command {

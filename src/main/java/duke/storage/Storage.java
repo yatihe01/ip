@@ -1,4 +1,8 @@
-package duke;
+package duke.storage;
+
+import duke.task.Task;
+import duke.task.TaskDecoder;
+import duke.task.TaskEncoder;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

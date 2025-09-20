@@ -1,4 +1,4 @@
-package duke;
+package duke.task;
 
 public class TaskDecoder {
     public static Task decode(String line) {

@@ -11,14 +11,14 @@ import javafx.stage.Stage;
 /**
  * A GUI for Duke using FXML.
  */
-public class GUI extends Application {
+public class Main extends Application {
 
     private ChatHYT duke = new ChatHYT();
 
     @Override
     public void start(Stage stage) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(GUI.class.getResource("/view/MainWindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/MainWindow.fxml"));
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);

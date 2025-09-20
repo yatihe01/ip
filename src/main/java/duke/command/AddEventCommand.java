@@ -1,10 +1,10 @@
 package duke.command;
 
 import java.util.ArrayList;
-import duke.Task;
-import duke.Event;
-import duke.Storage;
-import duke.Ui;
+import duke.task.Task;
+import duke.task.Event;
+import duke.storage.Storage;
+import duke.ui.Ui;
 import duke.exception.EmptyDescriptionException;
 import duke.exception.InvalidCommandException;
 

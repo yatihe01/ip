@@ -1,4 +1,4 @@
-package duke;
+package duke.task;
 
 public class TaskEncoder {
     public static String encode(Task task) {
