@@ -1,5 +1,9 @@
 package duke.command;
 
+/**
+ *  Represents a command to show goodbye message.
+ */
+
 import java.util.ArrayList;
 import duke.task.Task;
 import duke.storage.Storage;
