@@ -14,12 +14,27 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+/**
+ * Handles persistent storage of tasks to and from a file.
+ */
+
 public class Storage {
     private final Path filePath;
 
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
+
+    /**
+     * Loads tasks from the storage file.
+     * <p>
+     * If the file does not exist, it will be created along with any
+     * necessary parent directories. Corrupted lines that cannot be
+     * decoded are skipped with a warning message.
+     * </p>
+     *
+     * @return An {@link ArrayList} of {@link Task} objects loaded from the file.
+     */
 
     public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -46,6 +61,15 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves the given list of tasks to the storage file.
+     * <p>
+     * Each task is encoded into a string representation using
+     * {@link TaskEncoder} before being written to the file.
+     * </p>
+     *
+     * @param tasks The {@link ArrayList} of {@link Task} objects to be saved.
+     */
     public void save(ArrayList<Task> tasks) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath.toFile()))) {
             for (Task task : tasks) {
