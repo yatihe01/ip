@@ -54,7 +54,7 @@ Example: `mark 2`
 
 Expected output:
 ```
-Nice! I've marked this task as done:
+Nice to see that you have completed it:
   [D][X] Finish CS2103 ip (by: Sep 30 2025)
 ```
 unmark
