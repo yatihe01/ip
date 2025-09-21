@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="400.0"
             xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="duke.MainWindow"
+            fx:controller="chatHYT.MainWindow"
             style="-fx-background-image: url('/Images/chatHYT4.png');
                    -fx-background-size: cover;
                    -fx-background-position: center;
